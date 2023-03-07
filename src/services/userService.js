@@ -43,7 +43,13 @@ const newUser = async (displayName, email, password, image) => {
   return { type: null, message: tokAuth };
 };
 
+const listAll = async () => {
+ const allUsers = await User.findAll({ attributes: { exclude: 'password' } });
+ return { type: null, message: allUsers };
+};
+
 module.exports = {
   add,
   newUser,
+  listAll,
 };

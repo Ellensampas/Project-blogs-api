@@ -6,8 +6,8 @@ const verifyDisplayName = (disName) => {
 
 const verifyEmail = (email) => {
   const regex = /\S+@\S+\.\S+/;
-  const verifRegex = regex.test(email);
-  return verifRegex;
+  const verifyRegex = regex.test(email);
+  return verifyRegex;
 };
 
 const verifyPassword = (password) => {

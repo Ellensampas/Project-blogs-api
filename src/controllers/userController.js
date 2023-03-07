@@ -28,14 +28,19 @@ const createUser = async (req, res) => {
     return res.status(400).json({ 
       message: '"password" length must be at least 6 characters long' });
   }
-
   if (type === 'EMAIL_EXISTENTE') {
     return res.status(409).json({ message: 'User already registered' });
   }
   return res.status(201).json({ token: message });
 };
 
+const listAllUser = async (_req, res) => {
+  const { message } = await userService.listAll();
+  return res.status(200).json(message);
+};
+
 module.exports = {
   add,
   createUser,
+  listAllUser,
 };
