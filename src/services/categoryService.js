@@ -10,6 +10,12 @@ const add = async (name) => {
   return { type: null, message: addCategory };
 };
 
+const listUsers = async () => {
+  const allUsers = await Category.findAll({ attributes: { include: 'name' } });
+  return { type: null, message: allUsers };
+};
+
 module.exports = {
   add,
+  listUsers,
 };

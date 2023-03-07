@@ -13,6 +13,12 @@ const add = async (req, res) => {
   return res.status(201).json({ id, name });
 };
 
+const listAllUser = async (_req, res) => {
+    const { message } = await categoryService.listUsers();
+    return res.status(200).json(message);
+};
+
 module.exports = {
   add,
+  listAllUser,
 };
