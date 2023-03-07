@@ -39,8 +39,19 @@ const listAllUser = async (_req, res) => {
   return res.status(200).json(message);
 };
 
+const listId = async (req, res) => {
+  const { id } = req.params;
+  const { type, message } = await userService.getId(id);
+
+  if (type === 'USUARIO_INVALIDO') {
+    return res.status(404).json({ message: 'User does not exist' });
+  }
+  return res.status(200).json(message);
+};
+
 module.exports = {
   add,
   createUser,
   listAllUser,
+  listId,
 };

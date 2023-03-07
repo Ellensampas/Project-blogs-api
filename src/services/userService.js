@@ -48,8 +48,17 @@ const listAll = async () => {
  return { type: null, message: allUsers };
 };
 
+const getId = async (id) => {
+  const idUser = await User.findOne({ where: { id }, attributes: { exclude: 'password' } });
+  if (!idUser) {
+    return { type: 'USUARIO_INVALIDO' };
+  }
+  return { type: null, message: idUser };
+};
+
 module.exports = {
   add,
   newUser,
   listAll,
+  getId,
 };
