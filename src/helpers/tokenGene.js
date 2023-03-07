@@ -14,6 +14,9 @@ const tok = (payload) => {
     return token;
 };
 
-const validaTok = (tk) => jwt.verify(tk, secret);
+const validaTok = (payload) => { 
+  const res = jwt.verify(payload, secret);
+  return res;
+};
 
 module.exports = { tok, validaTok };

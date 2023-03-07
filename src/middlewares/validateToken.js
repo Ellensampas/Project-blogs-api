@@ -7,8 +7,8 @@ module.exports = (req, res, next) => {
     if (!authorization) {
       return res.status(401).json({ message: 'Token not found' });
     }
-    const userValid = validaTok(authorization);
-    req.userValid = userValid;
+    const { payload } = validaTok(authorization);
+    req.payload = payload;
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Expired or invalid token' });
